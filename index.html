@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>いじわる占い館🧙‍♀️</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 2em;
+      background-color: #fff0f5;
+    }
+    input, button {
+      padding: 0.7em;
+      font-size: 1.2em;
+      margin: 0.5em;
+      border-radius: 8px;
+      border: none;
+      background-color: #ffccdd;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff99bb;
+    }
+    #result {
+      margin-top: 2em;
+      font-size: 1.8em;
+      color: #d6336c;
+      background-color: #ffe6f0;
+      padding: 1em;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    #tip {
+      margin-top: 2em;
+      font-size: 1.4em;
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body>
+  <h1>いじわる占い館🧙‍♀️</h1>
+  <p>名前を入れて、今日のいじわる占いを受けてみましょう</p>
+  <input type="text" id="nameInput" placeholder="名前を入力してね">
+  <button onclick="fortune()">占う！</button>
+
+  <div id="result"></div>
+
+  <div style="margin-top: 2.5em;">
+    <button onclick="showTip()">運気アップのヒントをもらう✨</button>
+    <div id="tip"></div>
+  </div>
+
+  <script>
+    const fortunes = ["大吉", "中吉", "小吉", "凶", "大凶"];
+    const messages = [
+      "今日はやる気が出るけど、出るのは10秒だけです",
+      "あなたの靴下、たぶん左右違うよ",
+      "やるべきことは忘れて、どうでもいいことだけ覚えてる日です",
+      "今日は運がいいけど、まったく気づかないでしょう",
+      "話しかけた人、3人は聞いてません"
+    ];
+    const tips = [
+      "朝に深呼吸を3回してから出発すると、いいことがあるかも！",
+      "今日だけはトイレ掃除してみて。運気がアップするかも。",
+      "靴をそろえると小さな幸運が訪れるかも？",
+      "自販機でいつもと違う飲み物を買ってみよう。",
+      "ありがとうを3回声に出すと、世界がちょっと優しくなるよ。"
+    ];
+
+    function fortune() {
+      const name = document.getElementById("nameInput").value;
+      const resultFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+      const message = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("result").innerText = `${name}さんの運勢：${resultFortune}！\n${message}`;
+      document.getElementById("tip").innerText = "";
+    }
+
+    function showTip() {
+      const tip = tips[Math.floor(Math.random() * tips.length)];
+      document.getElementById("tip").innerText = `✨運気アップのヒント：\n${tip}`;
+    }
+  </script>
+</body>
+</html>
